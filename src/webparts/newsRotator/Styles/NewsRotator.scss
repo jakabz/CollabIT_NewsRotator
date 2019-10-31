@@ -1,0 +1,14 @@
+.slick-next:before, .slick-prev:before {
+    color: red;
+}
+.slick-slide h3{
+    background-color: "[theme: themeDark]";
+    height: 150px;
+    color:"[theme: white]";
+    padding: 15px;
+    margin:0;
+}
+
+li.slick-active > div {
+    background-color: "[theme: themeDarkAlt]" !important;
+}

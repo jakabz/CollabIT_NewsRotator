@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "38f7c848-1cde-4803-8c8b-f1de1b667cf2",
+  "alias": "NewsRotatorWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "News Rotator" },
+    "description": { "default": "News Rotator description" },
+    "officeFabricIconFontName": "OpenPane",
+    "properties": {
+      "title": "",
+      "autoplay": true,
+      "fade": false,
+      "autoplaySpeed": 3000,
+      "animationSpeed": 500,
+      "fourtElement": 0,
+      "fifthElement": 1,
+      "fullList": ""
+    }
+  }]
+}
