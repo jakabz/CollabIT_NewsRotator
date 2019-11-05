@@ -29,7 +29,44 @@
     background-position: center center;
   }
 
-  .SlickDots li {
+  .SlickDots1 li {
+    display: inline-block;
+    width: calc(100% - 1px);
+    margin:0;
+    padding:0;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-color: "[theme: themeDarkAlt]";
+  }
+
+  .SlickDots2 li {
+    display: inline-block;
+    width: calc(50% - 1px);
+    margin:0;
+    padding:0;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-color: "[theme: themeDarkAlt]";
+  }
+  .SlickDots3 li {
+    display: inline-block;
+    width: calc(33.333333% - 1px);
+    margin:0;
+    padding:0;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-color: "[theme: themeDarkAlt]";
+  }
+  .SlickDots4 li {
+    display: inline-block;
+    width: calc(25% - 1px);
+    margin:0;
+    padding:0;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-color: "[theme: themeDarkAlt]";
+  }
+  .SlickDots5 li {
     display: inline-block;
     width: calc(20% - 1px);
     margin:0;
@@ -44,7 +81,7 @@
     border-right:none;
   }
 
-  .SlickDots {
+  .SlickDots1,.SlickDots2,.SlickDots3,.SlickDots4,.SlickDots5 {
     margin:0;
     padding:0; 
     list-style-type: none;

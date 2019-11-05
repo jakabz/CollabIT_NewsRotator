@@ -40,9 +40,10 @@ export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotat
   private fullListInit = false;
 
   public onInit<T>(): Promise<T> {
+    let today = new Date().toISOString();
     let queryRotator = '';
     queryRotator += '$select=ID,Title,BannerImageUrl,FileRef&';
-    queryRotator += '$filter=(NewsRotator eq 1) and (PromotedState eq 2) and (FinalApproved eq 1)&';
+    queryRotator += '$filter=(NewsRotator eq 1) and (PromotedState eq 2) and (FinalApproved eq 1) and (FSObjType eq 0) and (ExpireDate gt \''+today+'\' )&';
     queryRotator += '$top=3&';
     queryRotator += '$orderby=FirstPublishedDate desc';
     this._getListData(queryRotator).then((response) => {

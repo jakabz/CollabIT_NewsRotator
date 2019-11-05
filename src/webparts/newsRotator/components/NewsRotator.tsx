@@ -9,9 +9,25 @@ import "../Styles/NewsRotator.scss";
 export default class NewsRotator extends React.Component<INewsRotatorProps, {}> {
   
   private items:any;
+  private itemsArr = [];
+  private buttonwidths = [styles.SlickDots1,styles.SlickDots2,styles.SlickDots3,styles.SlickDots4,styles.SlickDots5];
   
   public render(): React.ReactElement<INewsRotatorProps> {
     //console.info(this.props);
+
+    this.props.listItems.forEach((item,i) => {
+      if(this.props.listItems[i].BannerImageUrl.Url.indexOf('Resolution') == -1){
+        this.props.listItems[i].BannerImageUrl.Url += this.props.listItems[i].BannerImageUrl.Url.indexOf('?') > -1 ? '&Resolution=3' : '?Resolution=3';
+      }
+    });
+
+    this.items = this.props.listItems.map((item, key) =>
+      { if(item) {
+        this.itemsArr.push(key);
+        return <div className={styles.SlickSlideItem}><a href={item.FileRef} title={item.Title} target="_blank"><div style={{backgroundImage: `url(${item.BannerImageUrl.Url})`}}></div></a></div>
+      }}
+    );
+
     const settings = {
       dots: true,
       infinite: true,
@@ -22,24 +38,14 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
       fade: this.props.fade,
       autoplay: this.props.autoplay,
       autoplaySpeed: this.props.autoplaySpeed,
-      dotsClass: styles.SlickDots, 
+      dotsClass: this.buttonwidths[this.itemsArr.length-1], 
       appendDots: dots => (
           <ul> {dots} </ul>
       ),
       customPaging: i => (
-          <div className={styles.SlickDotsListItem} title={this.props.listItems[i].Title}> {this.props.listItems[i].Title} </div>
+          <div className={styles.SlickDotsListItem} title={this.props.listItems[this.itemsArr[i]].Title}> {this.props.listItems[this.itemsArr[i]].Title} </div>
       )
     };
-
-    this.props.listItems.forEach((item,i) => {
-      if(this.props.listItems[i].BannerImageUrl.Url.indexOf('Resolution') == -1){
-        this.props.listItems[i].BannerImageUrl.Url += this.props.listItems[i].BannerImageUrl.Url.indexOf('?') > -1 ? '&Resolution=3' : '?Resolution=3';
-      }
-    });
-
-    this.items = this.props.listItems.map((item, key) =>
-      <div className={styles.SlickSlideItem}><a href={item.FileRef} title={item.Title} target="_blank"><div style={{backgroundImage: `url(${item.BannerImageUrl.Url})`}}></div></a></div>
-    );
 
     return (
       <div className={styles.newsRotator}>
