@@ -10,10 +10,10 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
   
   private items:any;
   private itemsArr = [];
-  private buttonwidths = [styles.SlickDots1,styles.SlickDots2,styles.SlickDots3,styles.SlickDots4,styles.SlickDots5];
   
   public render(): React.ReactElement<INewsRotatorProps> {
     //console.info(this.props);
+    let self = this;
 
     this.props.listItems.forEach((item,i) => {
       if(this.props.listItems[i].BannerImageUrl.Url.indexOf('Resolution') == -1){
@@ -21,12 +21,18 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
       }
     });
 
+    this.itemsArr = [];
     this.items = this.props.listItems.map((item, key) =>
       { if(item) {
         this.itemsArr.push(key);
         return <div className={styles.SlickSlideItem}><a href={item.FileRef} title={item.Title} target="_blank"><div style={{backgroundImage: `url(${item.BannerImageUrl.Url})`}}></div></a></div>
       }}
     );
+
+    function getButtonClass(){
+      var buttonwidths = [styles.SlickDots1,styles.SlickDots2,styles.SlickDots3,styles.SlickDots4,styles.SlickDots5];
+      return buttonwidths[self.itemsArr.length-1];
+    }
 
     const settings = {
       dots: true,
@@ -38,7 +44,7 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
       fade: this.props.fade,
       autoplay: this.props.autoplay,
       autoplaySpeed: this.props.autoplaySpeed,
-      dotsClass: this.buttonwidths[this.itemsArr.length-1], 
+      dotsClass: getButtonClass(), 
       appendDots: dots => (
           <ul> {dots} </ul>
       ),
