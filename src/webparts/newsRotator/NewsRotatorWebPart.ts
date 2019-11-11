@@ -58,7 +58,7 @@ export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotat
       this.fullList = response.value;
       response.value.forEach((element,i) => {
         this.fullListResult.push({
-          key: i,
+          key: element.Id,
           text: element.Title
         });
       });
@@ -85,8 +85,14 @@ export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotat
       }
     );
     if(this.listInit && this.fullListInit){
-      element.props.listItems[3] = this.fullList[this.properties.fourtElement];
-      element.props.listItems[4] = this.fullList[this.properties.fifthElement];
+      this.fullList.forEach((item,i) => {
+        if(item.Id == this.properties.fourtElement) {
+          element.props.listItems[3] = item;
+        }
+        if(item.Id == this.properties.fifthElement) {
+          element.props.listItems[4] = item;
+        }
+      });
       ReactDom.render(element, this.domElement);
     }
   }

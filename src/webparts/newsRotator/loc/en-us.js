@@ -5,7 +5,7 @@ define([], function() {
     "FadeFieldLabel": "Fade animation",
     "AutoplaySpeedFieldLabel": "Autoplay Speed",
     "AnimationSpeedFieldLabel": "Animation Speed",
-    "fourtElementFieldLabel": "Fourt rotator element",
+    "fourtElementFieldLabel": "Fourth rotator element",
     "fifthElementFieldLabel": "Fifth rotator element"
   }
 });
