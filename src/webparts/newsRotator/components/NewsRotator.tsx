@@ -25,7 +25,7 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
     this.items = this.props.listItems.map((item, key) =>
       { if(item) {
         this.itemsArr.push(key);
-        return <div className={styles.SlickSlideItem}><a href={item.FileRef} title={item.Title} target="_blank"><div style={{backgroundImage: `url(${item.BannerImageUrl.Url})`}}></div></a></div>
+        return <div className={styles.SlickSlideItem}><a href={item.FileRef} title={item.Title} target="_blank"><div style={{backgroundImage: `url(${item.BannerImageUrl.Url})`}}></div></a></div>;
       }}
     );
 
