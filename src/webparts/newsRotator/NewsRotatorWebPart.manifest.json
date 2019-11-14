@@ -22,7 +22,8 @@
       "animationSpeed": 500,
       "fourtElement": 0,
       "fifthElement": 1,
-      "fullList": ""
+      "fullList": "",
+      "fixedItems": true
     }
   }]
 }

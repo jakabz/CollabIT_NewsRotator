@@ -6,6 +6,7 @@ define([], function() {
     "AutoplaySpeedFieldLabel": "Autoplay Speed",
     "AnimationSpeedFieldLabel": "Animation Speed",
     "fourtElementFieldLabel": "Fourth rotator element",
-    "fifthElementFieldLabel": "Fifth rotator element"
+    "fifthElementFieldLabel": "Fifth rotator element",
+    "FixedLastItemsFieldLabel": "Fixed news"
   }
 });

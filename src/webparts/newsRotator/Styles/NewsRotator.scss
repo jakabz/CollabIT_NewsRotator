@@ -9,3 +9,18 @@
 li.slick-active > div {
     background-color: "[theme: themeDarkAlt]" !important;
 }
+
+.slick-dots {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width:auto;
+}
+
+.slick-dots li button:before {
+    color: "[theme: themeDarkAlt]";
+    font-size:12px;
+}
+.slick-dots li.slick-active button:before {
+    color: "[theme: themePrimary]"
+}

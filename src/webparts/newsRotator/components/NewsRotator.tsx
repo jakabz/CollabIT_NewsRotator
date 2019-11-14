@@ -12,7 +12,7 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
   private itemsArr = [];
   
   public render(): React.ReactElement<INewsRotatorProps> {
-    //console.info(this.props);
+    console.info(this.props);
     let self = this;
 
     this.props.listItems.forEach((item,i) => {
@@ -25,7 +25,13 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
     this.items = this.props.listItems.map((item, key) =>
       { if(item) {
         this.itemsArr.push(key);
-        return <div className={styles.SlickSlideItem}><a href={item.FileRef} title={item.Title} target="_blank"><div style={{backgroundImage: `url(${item.BannerImageUrl.Url})`}}></div></a></div>;
+        return <div className={styles.SlickSlideItem}>
+          <a href={item.FileRef} title={item.Title} target="_blank">
+            <div className={styles.bannertImage} style={{backgroundImage: `url(${item.BannerImageUrl.Url})`}}>
+              <div className={styles.bannertTitle}>{item.Title}</div>
+            </div>
+          </a>
+        </div>;
       }}
     );
 
@@ -44,13 +50,13 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
       fade: this.props.fade,
       autoplay: this.props.autoplay,
       autoplaySpeed: this.props.autoplaySpeed,
-      dotsClass: getButtonClass(), 
-      appendDots: dots => (
+      //dotsClass: getButtonClass(), 
+      /*appendDots: dots => (
           <ul> {dots} </ul>
       ),
       customPaging: i => (
           <div className={styles.SlickDotsListItem} title={this.props.listItems[this.itemsArr[i]].Title}> {this.props.listItems[this.itemsArr[i]].Title} </div>
-      )
+      )*/
     };
 
     return (

@@ -6,6 +6,7 @@ declare interface INewsRotatorWebPartStrings {
   AnimationSpeedFieldLabel: string;
   fourtElementFieldLabel: string;
   fifthElementFieldLabel: string;
+  FixedLastItemsFieldLabel: string;
 }
 
 declare module 'NewsRotatorWebPartStrings' {

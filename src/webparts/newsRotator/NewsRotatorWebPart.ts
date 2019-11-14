@@ -8,6 +8,7 @@ import {
   PropertyPaneToggle,
   PropertyPaneSlider,
   PropertyPaneDropdown,
+  PropertyPaneLabel,
   IPropertyPaneDropdownOption
 } from '@microsoft/sp-webpart-base';
 
@@ -29,6 +30,7 @@ export interface INewsRotatorWebPartProps {
   fourtElement: any;
   fifthElement: any;
   fullList: any;
+  fixedItems: boolean;
 }
 
 export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotatorWebPartProps> {
@@ -44,7 +46,11 @@ export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotat
     let queryRotator = '';
     queryRotator += '$select=ID,Title,BannerImageUrl,FileRef&';
     queryRotator += '$filter=(NewsRotator eq 1) and (PromotedState eq 2) and (FinalApproved eq 1) and (FSObjType eq 0) and (ExpireDate gt \''+today+'\' )&';
-    queryRotator += '$top=3&';
+    if(this.properties.fixedItems){
+      queryRotator += '$top=3&';
+    } else {
+      queryRotator += '$top=5&';
+    }
     queryRotator += '$orderby=FirstPublishedDate desc';
     this._getListData(queryRotator).then((response) => {
       this.listResult = response.value;
@@ -81,18 +87,23 @@ export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotat
         autoplaySpeed: this.properties.autoplaySpeed,
         fourtElement: this.properties.fourtElement,
         fifthElement: this.properties.fifthElement,
-        fullList: this.fullList
+        fullList: this.fullList,
+        fixedItems: this.properties.fixedItems
       }
     );
     if(this.listInit && this.fullListInit){
-      this.fullList.forEach((item,i) => {
-        if(item.Id == this.properties.fourtElement) {
-          element.props.listItems[3] = item;
-        }
-        if(item.Id == this.properties.fifthElement) {
-          element.props.listItems[4] = item;
-        }
-      });
+      if(this.properties.fixedItems){
+        this.fullList.forEach((item,i) => {
+          if(item.Id == this.properties.fourtElement) {
+            element.props.listItems[3] = item;
+          }
+          if(item.Id == this.properties.fifthElement) {
+            element.props.listItems[4] = item;
+          }
+        });
+      } else {
+        element.props.listItems = this.listResult;
+      }
       ReactDom.render(element, this.domElement);
     }
   }
@@ -113,6 +124,27 @@ export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotat
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    
+    let templateProperty4: any;
+    let templateProperty5: any;
+    if (this.properties.fixedItems) {
+      templateProperty4 = PropertyPaneDropdown('fourtElement', {
+        label: strings.fourtElementFieldLabel,
+        options: this.fullListResult
+      });
+      templateProperty5 = PropertyPaneDropdown('fifthElement', {
+        label: strings.fifthElementFieldLabel,
+        options: this.fullListResult
+      });
+    } else {
+      templateProperty4 = PropertyPaneLabel('emptyLabel', {
+        text: ""
+      });
+      templateProperty5 = PropertyPaneLabel('emptyLabel', {
+        text: ""
+      });
+    }
+    
     return {
       pages: [
         {
@@ -144,14 +176,11 @@ export default class NewsRotatorWebPart extends BaseClientSideWebPart<INewsRotat
                   showValue:true,  
                   step:100
                 }),
-                PropertyPaneDropdown('fourtElement', {
-                  label: strings.fourtElementFieldLabel,
-                  options: this.fullListResult
+                PropertyPaneToggle('fixedItems', {
+                  label: strings.FixedLastItemsFieldLabel
                 }),
-                PropertyPaneDropdown('fifthElement', {
-                  label: strings.fifthElementFieldLabel,
-                  options: this.fullListResult
-                })
+                templateProperty4,
+                templateProperty5
               ]
             }
           ]

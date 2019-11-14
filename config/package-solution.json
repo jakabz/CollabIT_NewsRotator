@@ -3,7 +3,7 @@
   "solution": {
     "name": "news-rotator-client-side-solution",
     "id": "5c4f3832-56bb-4b98-b09d-63ee61c0407e",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false

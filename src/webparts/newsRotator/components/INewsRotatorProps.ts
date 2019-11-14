@@ -8,4 +8,5 @@ export interface INewsRotatorProps {
   fourtElement: any;
   fifthElement: any;
   fullList: any;
+  fixedItems: boolean;
 }
