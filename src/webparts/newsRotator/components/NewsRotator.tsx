@@ -12,7 +12,7 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
   private itemsArr = [];
   
   public render(): React.ReactElement<INewsRotatorProps> {
-    console.info(this.props);
+    //console.info(this.props);
     let self = this;
 
     this.props.listItems.forEach((item,i) => {
