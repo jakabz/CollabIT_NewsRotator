@@ -47,6 +47,22 @@
     }
   }
 
+  .SlickDots {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width:165px;
+  } 
+  .SlickDots li button:before {
+    color: "[theme: themeDarkAlt]";
+    font-size:12px;
+    opacity: 0.8;
+  }
+
+  .SlickDots li[class="slick-active"] button:before {
+    color: "[theme: themePrimary]"
+  }
+
   .SlickDots1 li {
     display: inline-block;
     width: calc(100% - 1px);

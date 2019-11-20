@@ -4,7 +4,7 @@ import { INewsRotatorProps } from './INewsRotatorProps';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../Styles/NewsRotator.scss";
+//import "../Styles/NewsRotator.scss";
 
 export default class NewsRotator extends React.Component<INewsRotatorProps, {}> {
   
@@ -50,7 +50,7 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
       fade: this.props.fade,
       autoplay: this.props.autoplay,
       autoplaySpeed: this.props.autoplaySpeed,
-      //dotsClass: getButtonClass(), 
+      dotsClass: styles.SlickDots + ' slick-dots'
       /*appendDots: dots => (
           <ul> {dots} </ul>
       ),
