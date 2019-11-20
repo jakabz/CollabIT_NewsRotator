@@ -35,11 +35,6 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
       }}
     );
 
-    function getButtonClass(){
-      var buttonwidths = [styles.SlickDots1,styles.SlickDots2,styles.SlickDots3,styles.SlickDots4,styles.SlickDots5];
-      return buttonwidths[self.itemsArr.length-1];
-    }
-
     const settings = {
       dots: true,
       infinite: true,

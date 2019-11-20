@@ -51,7 +51,8 @@
     top: 0;
     right: 0;
     bottom: auto;
-    width:165px;
+    width:160px;
+    position: absolute;
   } 
   .SlickDots li button:before {
     color: "[theme: themeDarkAlt]";
@@ -111,7 +112,7 @@
   }
 
   .SlickDots li:last-child {
-    width: 20%;
+
     border-right:none;
   }
 
