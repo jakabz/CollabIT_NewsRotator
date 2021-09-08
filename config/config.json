@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "NewsRotatorWebPartStrings": "lib/webparts/newsRotator/loc/{locale}.js"
+    "NewsRotatorWebPartStrings": "lib/webparts/newsRotator/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

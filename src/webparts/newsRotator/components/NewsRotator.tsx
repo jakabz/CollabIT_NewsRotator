@@ -63,6 +63,7 @@ export default class NewsRotator extends React.Component<INewsRotatorProps, {}> 
           {this.items}
         </Slider>
       </div>
+      
     );
   }
 }
